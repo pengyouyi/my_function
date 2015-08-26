@@ -2,50 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>元素距离可视区顶部的距离</title>
+    <title>元素距离可视区顶部的距离(算上鼠标滚动的距离)</title>
 <style>
-#div1{
-    width: 100px;
-    height: 100px;
-    background: red;
-    position: relative;
-    top:200px;
-}
+div {padding: 40px 50px;}
+#div1 {background: red;position: relative;}
+#div2 {background: green; position: relative;}
+#div3 {background: orange; position: relative;}
 </style>
 <script type="text/javascript">
 window.onload=function(){
 
-    function getmyTop(obj){
+    
+    //某个元素距离可视区顶部的距离
+    /*function getmyTop(obj){
         var iTop=0;
         while(obj){
             iTop+=obj.offsetTop;
             obj=obj.offsetParent;
         }
-        //return iTop;
-        alert(iTop);
+        return iTop;
     }
-    var oDiv1=document.getElementById("div1");
+    var oDiv3=document.getElementById("div3");
 
-   // alert(getmyTop(oDiv1));
+   alert(getmyTop(oDiv3));*/
+
+    var oDiv3=document.getElementById("div3");
+
+   function getPos(obj){
+
+    var pos={left:0,top:0};
+
+    while(obj){
+        pos.top+=obj.offsetTop;
+        pos.left+=obj.offsetLeft;
+        obj=obj.offsetParent;
+    }
+    return pos;
+   }
+
+   var p=getPos(oDiv3);
+   alert("元素距离顶部："+p.top+',  距离左边：'+p.left);
+
+
 
 }
 
 
 </script>
 </head>
-<body>
-   <div id="div1"></div> 
-   <input type="button" value="获取div1距离顶部的距离" onclick="getmyTop(oDiv1)" />
-<script type="text/javascript">
- function getmyTop(obj){
-        var iTop=0;
-        while(obj){
-            iTop+=obj.offsetTop;
-            obj=obj.offsetParent;
-        }
-        alert(iTop);
-    }
-    var oDiv1=document.getElementById("div1");
-</script>
+<body id="body1">
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+        </div>
+    </div>
 </body>
 </html>
