@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素距离可视区顶部的距离</title>
+<style>
+#div1{
+    width: 100px;
+    height: 100px;
+    background: red;
+    //position: absolute;
+    position: relative;
+    top:200px;
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+
+    function getmyTop(obj){
+        var iTop=0;
+        while(obj){
+            iTop+=obj.offsetTop;
+            obj=obj.offsetParent;
+        }
+        //return iTop;
+        alert(iTop);
+    }
+    var oDiv1=document.getElementById("div1");
+
+   // alert(getmyTop(oDiv1));
+
+}
+
+
+</script>
+</head>
+<body>
+   <div id="div1"></div> 
+   <input type="button" value="获取div1距离顶部的距离" onclick="getmyTop(oDiv1)" />
+<script type="text/javascript">
+ function getmyTop(obj){
+        var iTop=0;
+        while(obj){
+            iTop+=obj.offsetTop;
+            obj=obj.offsetParent;
+        }
+        //return iTop;
+        alert(iTop);
+    }
+    var oDiv1=document.getElementById("div1");
+</script>
+</body>
+</html>
