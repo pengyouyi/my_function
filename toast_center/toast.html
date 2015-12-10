@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试toast</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<script type="text/javascript" src="http://img.m.duoku.com/cimages/img/promo/js/public/rem.js"></script>
+	<script type="text/javascript" src="http://img.m.duoku.com/cimages/img/h5/zepto.zea.min.js"></script>
+<style>
+*{margin:0;padding:0;border:none;background-size:100% 100%;list-style:none; position:relative;}
+a{text-decoration:none;}
+body{font-family: "Microsoft YaHei";}
+img{border:0 none;}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content: " ";clear:both;height:0;}
+.bg1{
+	height: 30rem;
+	background: #f90;
+	overflow: hidden;
+}
+#btn{
+	background:url(http://img.m.duoku.com/cimages/img/18773/18773.png) no-repeat 0 0; 
+	width:10rem; 
+	height:5rem; 
+	margin:20rem auto; 
+	display:block; 
+	background-size:100% 100%;
+}
+.bg2{
+	height: 60rem;
+	background: #f0e;
+	overflow: hidden;
+}
+#btn2{
+	background:url(http://img.m.duoku.com/cimages/img/19919/19919.png) no-repeat 0 0; 
+	width:7.59375rem; 
+	height:2.1875rem; 
+	margin:20rem auto; 
+	display:block; 
+	background-size:100% 100%;
+}
+.toast{
+	position: fixed;
+	display: -webkit-box;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	pointer-events:none;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	opacity: 0;
+}
+.toast:before{
+	content:attr(data-t);
+	display: block;
+	color: #fff;
+	font-size: 1rem;
+	background: #000;
+	border-radius: 0.4rem;
+	max-width: 12rem;
+	line-height: 1.2rem;
+	padding: 0.5rem 1rem;
+}	
+.toast.show{
+	opacity: 1;
+}	
+</style>
+</head>
+<body>
+<div class="toast"></div>
+<div class="bg1">
+	<a href="javascript:;" id="btn"></a>
+</div>
+<div class="bg2">
+	<a href="javascript:;" id="btn2"></a>
+</div>
+<script>
+function toast(text){
+	clearTimeout(toast.timer);
+	$(".toast").data("t", text).addClass("show");
+	toast.timer = setTimeout(function(){
+		$(".toast").removeClass("show");
+	}, Math.max(1500, text.length * 100))
+}
+$("#btn,#btn2").click(function(){
+	toast("恭喜您，抽到大奖，我们做朋友吧！");
+});
+</script>
+</body>
+</html>

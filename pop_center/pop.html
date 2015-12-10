@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试居中弹窗</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<script type="text/javascript" src="http://img.m.duoku.com/cimages/img/promo/js/public/rem.js"></script>
+	<script type="text/javascript" src="http://img.m.duoku.com/cimages/img/h5/zepto.zea.min.js"></script>
+<style>
+*{margin:0;padding:0;border:none;background-size:100% 100%;list-style:none; position:relative;}
+a{text-decoration:none;}
+body{font-family: "Microsoft YaHei";}
+img{border:0 none;}
+.clearfix:after{visibility:hidden;display:block;font-size:0;content: " ";clear:both;height:0;}
+.mask{
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #000;
+	opacity: 0.5;
+	z-index: 10;
+	-webkit-backface-visibility: hidden;
+	display: none;
+}
+.bg1{
+	height: 30rem;
+	background: #f90;
+	overflow: hidden;
+}
+#btn{
+	background:url(http://img.m.duoku.com/cimages/img/18773/18773.png) no-repeat 0 0; 
+	width:10rem; 
+	height:5rem; 
+	margin:20rem auto; 
+	display:block; 
+	background-size:100% 100%;
+}
+.bg2{
+	height: 60rem;
+	background: #f0e;
+	overflow: hidden;
+}
+#btn2{
+	background:url(http://img.m.duoku.com/cimages/img/19919/19919.png) no-repeat 0 0; 
+	width:7.59375rem; 
+	height:2.1875rem; 
+	margin:20rem auto; 
+	display:block; 
+	background-size:100% 100%;
+}
+.pop{
+	display: none;
+	-webkit-box-align: center;
+	box-align: center;
+	-webkit-box-pack: center;
+	box-pack: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position:fixed;
+	z-index: 20;
+}
+.show_con{
+	position:relative;
+	border-radius: 0.5rem;
+	background: #fff;
+	padding: 1.5rem;
+}
+#btn_close{
+	background:url(http://img.m.duoku.com/cimages/img/18536/18536.png) no-repeat 0 0; 
+	width:2rem; 
+	height:2rem; 
+	background-size:100% 100%;
+	position: absolute;
+	top:-1rem;
+	right:-1rem;
+}
+#btn_sure{
+	background:url(http://img.m.duoku.com/cimages/img/18655/18655.png) no-repeat 0 0; 
+	display: block;
+	width:4rem; 
+	height:1.5rem; 
+	background-size:100% 100%;
+	margin: 1rem auto 0;
+}		
+</style>
+</head>
+<body>
+<div class="mask"></div>
+<div class="pop">
+	<div class="show_con">
+		<input type="button" value="" id="btn_close"/>
+		<h2>恭喜你，中奖了！</h2>
+		<ul>
+			<li>欢迎您</li>
+			<li>我们是一家人</li>
+			<li>哈哈哈哈哈哈哈哈哈</li>
+		</ul>
+		<input type="button" value="" id="btn_sure"/>
+	</div>
+</div>
+<div class="bg1">
+	<a href="javascript:;" id="btn"></a>
+</div>
+<div class="bg2">
+	<a href="javascript:;" id="btn2"></a>
+</div>
+<script>
+$("#btn,#btn2").click(function(){
+	$(".mask").show();
+	$(".pop").css('display','-webkit-box');
+	$("#btn_close,#btn_sure").click(function(){
+		$(".pop").css('display','none');
+		$(".mask").hide();
+	})
+});
+</script>
+</body>
+</html>
